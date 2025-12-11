@@ -9,35 +9,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Home, Search } from "lucide-react";
 import Link from "next/link";
 
 export default function AppSidebar() {
   const items = [
     {
       title: "Home",
-      url: "#",
+      url: "/",
       icon: Home,
     },
     {
-      title: "Inbox",
-      url: "#",
-      icon: Inbox,
-    },
-    {
-      title: "Calendar",
-      url: "#",
-      icon: Calendar,
-    },
-    {
       title: "Search",
-      url: "#",
+      url: "/search",
       icon: Search,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
     },
   ];
   return (
