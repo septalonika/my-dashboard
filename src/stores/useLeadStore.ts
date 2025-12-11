@@ -7,10 +7,9 @@ type LeadStoreState = {
   loading: boolean;
   leads: LeadInterface[];
   setLoading: (loading: boolean) => void;
-  getLeads: () => Promise<LeadInterface[]>; // Fixed: returns array
+  getLeads: () => Promise<LeadInterface[]>;
   setLeads: (leads: LeadInterface[]) => void;
 
-  // ✅ NEW: Full CRUD operations
   createLead: (
     leadData: Omit<
       LeadInterface,
@@ -36,8 +35,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
       set({ loading: true });
       const baseUrl =
         process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5047";
-
-      // Handle both { leads: [...] } and direct array formats
       const { data } = await axios.get(`${baseUrl}/leads`);
       const leadsArray = Array.isArray(data) ? data : data.leads || [];
 
@@ -53,7 +50,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
 
   setLeads: (leads: LeadInterface[]) => set({ leads }),
 
-  // ✅ CREATE: POST /leads
   createLead: async (leadData) => {
     try {
       set({ loading: true });
@@ -97,7 +93,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
       );
       toast.success("Lead updated successfully");
 
-      // Refresh leads
       await get().getLeads();
       return data;
     } catch (error) {
@@ -107,7 +102,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
     }
   },
 
-  // ✅ DELETE: DELETE /leads/:id
   deleteLead: async (id) => {
     try {
       set({ loading: true });
@@ -117,7 +111,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
       await axios.delete(`${baseUrl}/leads/${id}`);
       toast.success("Lead deleted successfully");
 
-      // Refresh leads
       await get().getLeads();
     } catch (error) {
       toast.error("Failed to delete lead");
@@ -126,7 +119,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
     }
   },
 
-  // ✅ BULK UPDATE: POST /leads/bulk-update
   bulkUpdate: async (ids, data) => {
     try {
       set({ loading: true });
@@ -136,7 +128,6 @@ export const useLeadStore = create<LeadStoreState>((set, get) => ({
       await axios.post(`${baseUrl}/leads/bulk-update`, { ids, data });
       toast.success(`Updated ${ids.length} leads`);
 
-      // Refresh leads
       await get().getLeads();
     } catch (error) {
       toast.error("Failed to bulk update leads");

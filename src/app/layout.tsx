@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 import { SidebarProvider } from "@/components/ui/sidebar";
-import AppSidebar from "@/components/molecules/app-sidebar";
+import AppSidebar from "@/components/sidebar/app-sidebar";
 
 export default function RootLayout({
   children,
