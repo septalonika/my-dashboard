@@ -37,6 +37,8 @@ my-dashboard/
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
 │   │   └── globals.css
+|   |   └── search/
+|   |       └── page.tsx
 │   │
 │   ├── components/
 │   │   ├── dashboard/
@@ -48,7 +50,7 @@ my-dashboard/
 │   │   │   ├── lead-avatar.tsx
 │   │   │   ├── lead-detail-dialog.tsx
 │   │   │   ├── lead-form-dialog.tsx
-│   │   │   ├── lead-search.tsx         # ⭐ NEW: Search component
+│   │   │   ├── lead-search.tsx
 │   │   │   ├── lead-table-row.tsx
 │   │   │   ├── leads-table-header.tsx
 │   │   │   └── pagination.tsx
@@ -72,7 +74,7 @@ my-dashboard/
 │   │   ├── use-mobile.ts
 │   │   ├── useLeadFilters.ts
 │   │   ├── useLeadForm.ts
-│   │   └── useSearchLeads.ts           # ⭐ NEW: Search hook
+│   │   └── useSearch.ts
 │   │
 │   ├── interfaces/
 │   │   └── leads.ts
@@ -198,25 +200,13 @@ import { LeadSearch } from "@/components/dashboard/lead-search";
 
 ### Search Hook
 
-Location: `src/hooks/useSearchLeads.ts`
+Location: `src/hooks/useSearch.ts`
 
 **Features**:
 
 - AbortController for cancellation
 - Request ID tracking
 - Type-safe state management
-
-**Usage**:
-
-```typescript
-const { data, loading, error, searchLeads, clearSearch } = useSearchLeads();
-
-// Perform search
-searchLeads("john doe");
-
-// Clear results
-clearSearch();
-```
 
 ## 🔌 API Endpoints
 
@@ -305,7 +295,7 @@ MIT License - see LICENSE file for details
 
 **Your Name**
 
-- GitHub: [@septalonika](https://github.com/septalonika)
+- GitHub: <https://github.com/septalonika>
 - Email: septalonikal@gmail.com
 
 ## 🙏 Acknowledgments
@@ -317,5 +307,5 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Last Updated**: December 2025  
+**Last Updated**: 11 December 2025  
 **Version**: 1.0.0
