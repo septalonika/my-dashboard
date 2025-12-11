@@ -51,18 +51,28 @@ export function LeadFormDialog({
         <div className="space-y-4">
           <Input
             placeholder="Name"
+            type="text"
             value={formData.name}
             onChange={(e) => onFormChange({ name: e.target.value })}
           />
           <Input
             placeholder="Email"
             value={formData.email}
+            type="email"
             onChange={(e) => onFormChange({ email: e.target.value })}
           />
           <Input
             placeholder="Phone"
+            type="text"
             value={formData.phone}
-            onChange={(e) => onFormChange({ phone: e.target.value })}
+            onChange={(e) => {
+              const numericValue = e.target.value.replace(/\D/g, "");
+              if (numericValue.length <= 15) {
+                onFormChange({ phone: numericValue });
+              }
+              if (numericValue.length > 15) return;
+              onFormChange({ phone: numericValue });
+            }}
           />
           <Select
             value={formData.status}
