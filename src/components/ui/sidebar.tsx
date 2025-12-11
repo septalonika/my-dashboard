@@ -606,11 +606,12 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean;
 }) {
+  const [width, setWidth] = React.useState("70%");
   // Random width between 50 to 90 %.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
+  React.useEffect(() => {
+    const randomWidth = Math.floor(Math.random() * (90 - 50 + 1)) + 50;
+    setWidth(`${randomWidth}%`);
   }, []);
-
   return (
     <div
       data-slot="sidebar-menu-skeleton"
