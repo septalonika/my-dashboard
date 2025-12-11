@@ -1,5 +1,6 @@
 import { inter, roboto } from "@/libs/fonts";
-import "./globals.css";
+import "@/app/globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({
   children,
@@ -9,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${roboto.className} antialiased`}>
+        <Toaster position="top-center" />
         {children}
       </body>
     </html>
