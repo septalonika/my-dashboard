@@ -1,3 +1,5 @@
 {
-  "/leads/bulk-update": "/bulk-update"
+  "/leads/bulk-update": "/bulk-update",
+  "/api/leads": "/leads",
+  "/api/leads?search=:query": "/leads"
 }
